@@ -1,0 +1,464 @@
+/* =========================
+   COLOR VARIABLES
+========================= */
+:root {
+  --purple-dark: #2A004E;
+  --purple: #500073;
+  --red-dark: #C62300;
+  --red-light: #F14A00;
+  --white: #ffffff;
+}
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--purple-dark);
+  color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--red-light);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--red-light);
+}
+
+/* Mobile menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--purple);
+    width: 200px;
+    padding: 1rem;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* =========================
+   HEADER BANNER
+========================= */
+.header-banner-wrapper {
+  width: 100%;
+  margin-top: 64px; /* navbar height */
+  overflow: hidden;
+}
+
+.header-banner {
+  width: 100%;
+  height: 45vh;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .header-banner {
+    height: 35vh;
+  }
+}
+
+/* =========================
+   HOME SECTION
+========================= */
+#home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+}
+
+#home h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--red-light);
+}
+
+#home .highlight {
+  color: var(--white);
+}
+
+#home p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+#home button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  background: var(--red-dark);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#home button:hover {
+  background: var(--red-light);
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+#about {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  background: #1e0138;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.about-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--red-light);
+}
+
+.about-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+/* Profile Picture */
+.profile-pic {
+  margin: 2rem 0;
+}
+
+.profile-pic img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--red-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s;
+}
+
+.profile-pic img:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   PROJECTS SECTION
+========================= */
+#projects {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  background: var(--purple-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-container {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+}
+
+.projects-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--red-light);
+}
+
+.project-intro {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 3rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--purple);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.project-info h3 {
+  color: var(--red-light);
+  margin-bottom: 0.5rem;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.project-info a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--red-dark);
+  color: var(--white);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.project-info a:hover {
+  background: var(--red-light);
+}
+.video-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.video-box {
+  width: 90%;
+  max-width: 900px;
+  background: #000;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.video-box video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  float: right;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+#contact {
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  background: #1e0138;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--red-light);
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 3rem;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Contact Form */
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 0.8rem;
+  background: var(--red-dark);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: var(--red-light);
+}
+
+/* Contact Info */
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+  color: #ddd;
+}
+
+.contact-info h3 {
+  color: var(--red-light);
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--red-light);
+}
+
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--red-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: none;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background: var(--red-light);
+}
+/* =========================
+   PROJECT VIDEO MODAL FIX
+========================= */
+
+/* ADDED */
+.video-content {
+  width: 90%;                 /* ADDED */
+  max-width: 900px;           /* ADDED */
+  background: #000;           /* ADDED */
+  padding: 1rem;              /* ADDED */
+  border-radius: 12px;        /* ADDED */
+}
+
+/* ADDED */
+.video-content video {
+  width: 100%;                /* ADDED */
+  height: auto;               /* ADDED */
+  border-radius: 10px;        /* ADDED */
+}
+
+
