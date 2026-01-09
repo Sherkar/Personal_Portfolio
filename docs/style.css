@@ -102,7 +102,7 @@ nav ul li a:hover {
 ========================= */
 .header-banner-wrapper {
   width: 100%;
-  margin-top: 64px; /* navbar height */
+  margin-top: 64px;
   overflow: hidden;
 }
 
@@ -299,34 +299,11 @@ nav ul li a:hover {
 .project-info a:hover {
   background: var(--red-light);
 }
-.video-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
 
-.video-box {
-  width: 90%;
-  max-width: 900px;
-  background: #000;
-  padding: 1rem;
-  border-radius: 12px;
-}
-
-.video-box video {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.close-btn {
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-  float: right;
+/* Optional spacing for demo + code buttons */
+.project-links {
+  display: flex;
+  gap: 10px;
 }
 
 /* =========================
@@ -441,24 +418,3 @@ nav ul li a:hover {
 #backToTop:hover {
   background: var(--red-light);
 }
-/* =========================
-   PROJECT VIDEO MODAL FIX
-========================= */
-
-/* ADDED */
-.video-content {
-  width: 90%;                 /* ADDED */
-  max-width: 900px;           /* ADDED */
-  background: #000;           /* ADDED */
-  padding: 1rem;              /* ADDED */
-  border-radius: 12px;        /* ADDED */
-}
-
-/* ADDED */
-.video-content video {
-  width: 100%;                /* ADDED */
-  height: auto;               /* ADDED */
-  border-radius: 10px;        /* ADDED */
-}
-
-
