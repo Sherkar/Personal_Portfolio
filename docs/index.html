@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shubham Sherkar | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav>
+    <div class="logo">MY PORTFOLIO</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Header Banner ===== -->
+  <header class="header-banner-wrapper">
+    <img src="images/header-banner.png"
+         alt="Shubham Sherkar | Full Stack Java Developer"
+         class="header-banner">
+  </header>
+
+  <!-- ===== Home Section ===== -->
+  <section id="home">
+    <h1>Hello, I'm <span class="highlight">Shubham Sherkar</span></h1>
+    <p>
+      A Full Stack Java Developer building end-to-end web applications
+      using Java, Spring Boot, and applying AI/ML concepts to real-world problems.
+    </p>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      Explore More
+    </button>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section id="about">
+    <div class="about-container">
+      <h2>About Me</h2>
+
+      <div class="profile-pic">
+        <img src="images/Myphoto.png" alt="Shubham Sherkar">
+      </div>
+
+      <p class="about-intro">
+        Hi, I'm Shubham Sherkar, a Full Stack Java Developer passionate about
+        building reliable and scalable web applications.
+      </p>
+
+      <p>
+        My experience includes backend development with Java and Spring Boot,
+        frontend development using HTML, CSS, and JavaScript, and hands-on work
+        with AI/ML projects. I focus on writing clean code and learning through
+        building real-world systems.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Projects Section ===== -->
+  <section id="projects">
+    <div class="projects-container">
+      <h2>My Projects</h2>
+
+      <p class="project-intro">
+        Below are two major projects that demonstrate my skills in
+        <strong>Java, Spring Boot, Databases, and Python, Machine Learning</strong>.
+      </p>
+
+      <div class="project-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img src="images/digital-wallet.png" alt="Digital Wallet System">
+          <div class="project-info">
+            <h3>Digital Wallet System</h3>
+            <p>
+              A full-stack Java application developed using Spring Boot and MySQL
+              that allows users to create accounts and securely transfer money
+              between accounts using RESTful APIs and transaction management.
+            </p>
+            <a href="javascript:void(0)"
+               onclick="openVideo('digital-wallet-demo.mp4')">
+               ▶ View Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="images/bone-fracture.png" alt="Bone Fracture Detection System">
+          <div class="project-info">
+            <h3>Bone Fracture Imaging and Diagnosis System</h3>
+            <p>
+              A machine learning–based medical imaging project that analyzes bone
+              fracture images and predicts fracture types using a cascading model,
+              improving accuracy and diagnosis time.
+            </p>
+            <a href="javascript:void(0)"
+               onclick="openVideo('bone-fracture-demo.mp4')">
+               ▶ View Project
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact Section ===== -->
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Contact Me</h2>
+      <p class="contact-intro">
+        Have a project idea or want to connect? Feel free to reach out.
+      </p>
+
+      <div class="contact-content">
+
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <!-- ✅ PUT SCRIPT HERE (BOTTOM, BEFORE </body>) -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      fetch("http://localhost:8080/send-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: e.target.name.value,
+          email: e.target.email.value,
+          message: e.target.message.value
+        })
+      })
+      .then(res => res.text())
+      .then(data => alert(data))
+      .catch(err => alert("Failed to send"));
+    });
+  </script>
+        
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><strong>Email:</strong> shubhamsherkar222@gmail.com</p>
+          <p><strong>Location:</strong> Pune, India</p>
+
+          <div class="social-links">
+            <a href="https://github.com/Sherkar" target="_blank">🌐 GitHub</a>
+            <a href="https://www.linkedin.com/in/shubham-sherkar-131807252/"
+               target="_blank">💼 LinkedIn</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Project Video Modal (ADDED) ===== -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-content">
+      <span class="close-btn" onclick="closeVideo()">×</span>
+
+      <video id="projectVideo" controls preload="metadata">
+        <source id="videoSource" src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- ===== Script ===== -->
+  <script src="script.js"></script>
+
+</body>
+</html>
