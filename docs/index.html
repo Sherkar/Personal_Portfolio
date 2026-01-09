@@ -84,10 +84,16 @@
               that allows users to create accounts and securely transfer money
               between accounts using RESTful APIs and transaction management.
             </p>
-            <a href="javascript:void(0)"
-               onclick="openVideo('digital-wallet-demo.mp4')">
-               ▶ View Project
-            </a>
+
+            <div class="project-links">
+              <a href="https://youtu.be/5-eHtG4iUYg" target="_blank">
+                ▶ Watch Demo
+              </a>
+              <a href="https://github.com/Sherkar/digital-wallet" target="_blank">
+                💻 View Code
+              </a>
+            </div>
+
           </div>
         </div>
 
@@ -101,10 +107,16 @@
               fracture images and predicts fracture types using a cascading model,
               improving accuracy and diagnosis time.
             </p>
-            <a href="javascript:void(0)"
-               onclick="openVideo('bone-fracture-demo.mp4')">
-               ▶ View Project
-            </a>
+
+            <div class="project-links">
+              <a href="https://youtu.be/MShEa2IOvNE" target="_blank">
+                ▶ Watch Demo
+              </a>
+              <a href="https://github.com/Sherkar/bone-fracture-detection" target="_blank">
+                💻 View Code
+              </a>
+            </div>
+
           </div>
         </div>
 
@@ -128,26 +140,7 @@
           <textarea rows="5" placeholder="Your Message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
-        <!-- ✅ PUT SCRIPT HERE (BOTTOM, BEFORE </body>) -->
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
 
-      fetch("http://localhost:8080/send-message", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: e.target.name.value,
-          email: e.target.email.value,
-          message: e.target.message.value
-        })
-      })
-      .then(res => res.text())
-      .then(data => alert(data))
-      .catch(err => alert("Failed to send"));
-    });
-  </script>
-        
         <div class="contact-info">
           <h3>Get in Touch</h3>
           <p><strong>Email:</strong> shubhamsherkar222@gmail.com</p>
@@ -164,21 +157,8 @@
     </div>
   </section>
 
-  <!-- ===== Project Video Modal (ADDED) ===== -->
-  <div id="videoModal" class="video-modal">
-    <div class="video-content">
-      <span class="close-btn" onclick="closeVideo()">×</span>
-
-      <video id="projectVideo" controls preload="metadata">
-        <source id="videoSource" src="" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-
   <!-- ===== Script ===== -->
   <script src="script.js"></script>
 
 </body>
 </html>
-
