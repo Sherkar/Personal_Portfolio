@@ -1,36 +1,34 @@
+/* =========================
+   CONTACT FORM SUBMIT
+========================= */
 function sendMessage(event) {
-	event.preventDefault();
+  event.preventDefault();
 
-	const responseMsg = document.getElementById("responseMessage");
+  const responseMsg = document.getElementById("responseMessage");
 
-	const data = {
-		name: document.getElementById("name").value.trim(),
-		email: document.getElementById("email").value.trim(),
-		message: document.getElementById("message").value.trim()
-	};
+  const data = {
+    name: document.getElementById("name").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    message: document.getElementById("message").value.trim()
+  };
 
-	fetch("/send-message", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(data)
-	})
-	.then(res => {
-		if (!res.ok) {
-			return res.json();
-		}
-		return res.json().catch(() => res.text());
-	})
-	.then(response => {
-		responseMsg.style.color = "lightgreen";
-		responseMsg.textContent = "Message sent successfully!";
-		document.getElementById("contactForm").reset();
-	})
-	.catch(error => {
-		responseMsg.style.color = "red";
-		responseMsg.textContent = "Please enter valid details.";
-	});
+  fetch("/send-message", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(res => res.json())
+    .then(() => {
+      responseMsg.style.color = "lightgreen";
+      responseMsg.textContent = "Message sent successfully!";
+      document.getElementById("contactForm").reset();
+    })
+    .catch(() => {
+      responseMsg.style.color = "red";
+      responseMsg.textContent = "Please enter valid details.";
+    });
 }
 
 /* =========================
@@ -39,15 +37,6 @@ function sendMessage(event) {
 function toggleMenu() {
   const navLinks = document.getElementById("nav-links");
   navLinks.classList.toggle("active");
-}
-
-/* =========================
-   SMOOTH SCROLL (HOME → ABOUT)
-========================= */
-function scrollToAbout() {
-  document.getElementById("about").scrollIntoView({
-    behavior: "smooth"
-  });
 }
 
 /* =========================
@@ -69,27 +58,3 @@ backToTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
-
-/* =========================
-   PROJECT VIDEO MODAL
-========================= */
-function openVideo(videoFile) {   // ✅ FIX: accept filename
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("projectVideo");
-  const source = document.getElementById("videoSource");
-
-  source.src = "/videos/" + videoFile; // ✅ FIX: dynamic video
-
-  video.load();      // REQUIRED
-  modal.style.display = "flex";
-  video.play();
-}
-
-function closeVideo() {
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("projectVideo");
-
-  video.pause();
-  video.currentTime = 0;
-  modal.style.display = "none";
-}
